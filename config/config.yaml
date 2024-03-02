@@ -1,0 +1,6 @@
+correction: True
+log_data: False
+matcher_func: 'flann' #Either flann or bf is used
+tracker_use_ord: True
+correction_interval: 50
+update_interval: 5

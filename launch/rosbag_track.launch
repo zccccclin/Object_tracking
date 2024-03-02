@@ -1,0 +1,15 @@
+<launch>
+    <rosparam command="load" file="$(find object_tracking)/config/config.yaml" />
+    <arg name="method" default="tracker"/>
+
+
+    <group if="$(eval arg('method') == 'tracker')">
+        <node pkg="object_tracking" type="tracker_node.py" name="tracker" output="screen"/>
+    </group>
+
+    <group if="$(eval arg('method') == 'matcher')">
+        <node pkg="object_tracking" type="matcher_node.py" name="matcher" output="screen"/>
+    </group>
+
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find object_tracking)/launch/rviz_launch.rviz" />
+</launch>
